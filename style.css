@@ -1,0 +1,124 @@
+
+/* Wrapper: centers the calculator on the screen */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #e0e0e0;
+}
+
+
+/* Main container: holds the calculator */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 24px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    height: 520px;
+    overflow: hidden; /* ensures children don’t overflow corners */
+    border: 2px solid #444;
+}
+
+
+/* Calculator layout: input + buttons */
+.calculator {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+
+/* Input container */
+.input-container {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px; /* space between input and buttons */
+}
+
+
+/* Input/display */
+#display {
+    width: 95%;
+    height: 100px;
+    font-size: 3rem;
+    padding: 14px 18px;
+    border-radius: 16px;
+    box-sizing: border-box;
+    border: 2px solid #888;
+    background: #fff;
+    color: #222;
+    outline: none;
+    margin-bottom: 8px;
+    text-align: right;
+}
+
+
+/* Buttons container */
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 56px); /* Add this line */
+    gap: 12px;
+    width: 100%;
+    height: auto;
+    padding: 0px;
+}
+
+
+/* Individual buttons */
+.button, .button-container button {
+    width: 100%;
+    border-radius: 16px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    border: 2px solid black;
+    outline: none;
+    background-color: #e9e9e9; /* default for numbers */
+    color: #222;
+    box-sizing: border-box;
+    padding: 0;
+    transition: background 0.2s, border 0.2s;
+    cursor: pointer;
+}
+
+
+.button:hover, .button-container button:hover {
+    background-color: #d0d0d0;
+    border: 2px solid #000000;
+}
+
+
+/* Operators color and font size */
+.divide, .times, .minus, .plus {
+    background-color: #e3edfa !important;
+    color: #2158ce !important;
+    font-size: 1.5rem;
+}
+
+/* C and erase buttons: orange */
+.c, .erase {
+    background-color: #e3edfa!important;
+    color: #2158ce !important;
+    font-size: 1.5rem;
+}
+
+
+/* Equals button spans two rows */
+.equals {
+    grid-row: 4 / span 2 !important;
+    grid-column: 4 !important;
+    height: 100%;
+    background-color: #2158ce !important;
+    color: #fff !important;
+    font-weight: bold;
+    border-radius: 16px;
+}
