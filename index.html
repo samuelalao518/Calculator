@@ -1,43 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <!-- Start with dark theme -->
+  <link id="themeStylesheet" rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="wrapper">
-        <div class="container">
-    <div class="calculator">
+    <div id="glass-bg" class="sunset"></div>
+  <!-- Navbar with theme buttons -->
+  <nav class="navbar">
+    <div class="nav-left">Calculator</div>
+    <div class="theme-switch">
+      <button onclick="setTheme('dark')">Dark</button>
+      <button onclick="setTheme('neon')">Neon</button>
+      <button onclick="setTheme('ocean')">Ocean</button>
+      <button onclick="setTheme('night')">Night</button>
+      <button onclick="setTheme('pastel')">Pastel</button>
+      <button onclick="setTheme( 'sunset')">Sunset</button>
+    </div>
+  </nav>
+
+  <!-- Calculator wrapper -->
+  <div class="wrapper">
+    <div class="container">
+      <div class="calculator">
+        <!-- Input Display -->
         <div class="input-container">
-    <input type="text" id="display">
+          <input type="text" id="display" readonly>
+        </div>
+
+        <!-- Calculator Buttons -->
+        <div class="button-container">
+          <button class="c">C</button>
+          <button class="divide">&divide;</button>
+          <button class="times">&times;</button>
+          <button class="erase">&larr;</button>
+
+          <button>7</button>
+          <button>8</button>
+          <button>9</button>
+          <button class="minus">-</button>
+
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button class="plus">+</button>
+
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button class="equals">=</button>
+
+          <button>%</button>
+          <button>0</button>
+          <button>.</button>
+        </div>
+      </div>
     </div>
-    <div class="button-container">
-    <button class="c">C</button>
-    <button class="divide">&divide;</button>
-    <button class="times">&times;</button>
-    <button class="erase">&larr;</button>
-    <button>7</button>
-    <button>8</button>
-    <button>9</button>
-    <button class="minus">-</button>
-    <button>4</button>
-    <button>5</button>
-    <button>6</button>
-    <button class="plus">+</button>
-    <button>1</button>
-    <button>2</button>
-    <button>3</button>
-    <button class="equals">=</button>
-    <button>%</button>
-    <button>0</button>
-    <button>.</button>
-    </div>
-    </div>
-    </div>
-    </div>
-      <script src="script.js"></script>
+  </div>
+  
+  <!-- External JS -->
+  <script src="script.js"></script>
 </body>
 </html>
+
