@@ -1,38 +1,100 @@
+/* -----------------------
+   GENERAL STYLES
+----------------------- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
 
-/* Wrapper: centers the calculator on the screen */
+/* -----------------------
+   BACKGROUND GRADIENT
+----------------------- */
+#glass-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: background 0.5s ease;
+}
+
+/* Gradient themes */
+.sunset {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+}
+
+.ocean {
+    background: linear-gradient(135deg, #43cea2, #185a9d, #2bc0e4, #009ffd);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+}
+
+.neon {
+    background: linear-gradient(135deg, #ff6a00, #ee0979, #ff6ec4, #7366ff);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+}
+
+.night {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+}
+
+.pastel {
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee, #fddb92, #d1fdff);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* -----------------------
+   WRAPPER & CONTAINER
+----------------------- */
 .wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: #e0e0e0;
+    min-height: 100vh;
+    padding-top: 60px;
+    box-sizing: border-box;
 }
 
-
-/* Main container: holds the calculator */
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 350px;
-    background-color: #222;
+    height: 520px;
     padding: 20px;
     border-radius: 24px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
-    height: 520px;
-    overflow: hidden; /* ensures children don’t overflow corners */
-    border: 2px solid #444;
+    overflow: hidden;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
 }
 
-
-/* Calculator layout: input + buttons */
+/* -----------------------
+   CALCULATOR
+----------------------- */
 .calculator {
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 100%;
+    border-radius: 20px;
 }
-
 
 /* Input container */
 .input-container {
@@ -41,9 +103,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 16px; /* space between input and buttons */
+    margin-bottom: 16px;
 }
-
 
 /* Input/display */
 #display {
@@ -53,64 +114,62 @@
     padding: 14px 18px;
     border-radius: 16px;
     box-sizing: border-box;
-    border: 2px solid #888;
-    background: #fff;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
     color: #222;
     outline: none;
-    margin-bottom: 8px;
     text-align: right;
 }
 
-
-/* Buttons container */
+/* -----------------------
+   BUTTONS
+----------------------- */
 .button-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 56px); /* Add this line */
+    grid-template-rows: repeat(5, 56px);
     gap: 12px;
     width: 100%;
-    height: auto;
-    padding: 0px;
+    padding: 0;
 }
 
-
-/* Individual buttons */
 .button, .button-container button {
     width: 100%;
+    height: 100%;
     border-radius: 16px;
     font-size: 1.5rem;
     font-weight: 500;
-    border: 2px solid black;
+    border: none;
     outline: none;
-    background-color: #e9e9e9; /* default for numbers */
-    color: #222;
-    box-sizing: border-box;
-    padding: 0;
-    transition: background 0.2s, border 0.2s;
     cursor: pointer;
-}
+    padding: 0;
 
+    /* glassy style */
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
+    color: #222;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: background 0.2s, color 0.2s;
+}
 
 .button:hover, .button-container button:hover {
-    background-color: #d0d0d0;
-    border: 2px solid #000000;
+    background: rgba(255, 255, 255, 0.4);
 }
 
-
-/* Operators color and font size */
+/* Operators color */
 .divide, .times, .minus, .plus {
     background-color: #e3edfa !important;
     color: #2158ce !important;
     font-size: 1.5rem;
 }
 
-/* C and erase buttons: orange */
+/* C and erase buttons */
 .c, .erase {
-    background-color: #e3edfa!important;
+    background-color: #e3edfa !important;
     color: #2158ce !important;
     font-size: 1.5rem;
 }
-
 
 /* Equals button spans two rows */
 .equals {
@@ -121,4 +180,107 @@
     color: #fff !important;
     font-weight: bold;
     border-radius: 16px;
+}
+
+/* -----------------------
+   NAVBAR & THEME SWITCH
+----------------------- */
+.navbar {
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border-radius:0 0 12px 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    position: fixed;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: calc(100% - 40px);
+}
+
+.nav-left {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.theme-switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.navbar .theme-switch button {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
+    color: #222;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.navbar .theme-switch button:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* -----------------------
+   DARK THEME OVERRIDE
+----------------------- */
+body.dark-theme #glass-bg {
+    display: none;
+}
+
+body.dark-theme .container {
+    background: #222;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+
+body.dark-theme #display {
+    background: #fff;
+    color: #222;
+    border: 1px solid #888;
+}
+
+body.dark-theme .button,
+body.dark-theme .button-container button {
+    background: #e9e9e9;
+    color: #222;
+}
+
+body.dark-theme .divide,
+body.dark-theme .times,
+body.dark-theme .minus,
+body.dark-theme .plus,
+body.dark-theme .c,
+body.dark-theme .erase {
+    background-color: #e3edfa !important;
+    color: #2158ce !important;
+}
+
+body.dark-theme .equals {
+    background-color: #2158ce !important;
+    color: #fff !important;
+}
+body.dark-theme .navbar{
+    background: #111;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+body.dark-theme .navbar .theme-switch button{
+    background: #333;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+body.dark .navbar .theme-switch button:hover{
+    background: #555;
 }
